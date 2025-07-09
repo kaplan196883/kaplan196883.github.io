@@ -4,7 +4,11 @@ title: About
 permalink: /about/
 ---
 
-With a PhD in AI from Gdansk University, his academic and professional journey encompasses pioneering research, teaching at Sydney University, and leading innovative projects in logistics, cybersecurity, and computer vision. Dr. Kaplanski's work, underscored by 45 papers and multiple patents, reflects his commitment to leveraging technology for optimizing supply chains and enhancing data security. As the founder and leader of teams behind several successful startups, his contributions not only push the boundaries of AI application but also aim to solve complex societal challenges. 
+Dr. Pawel Kaplanski is at the forefront of a new industrial revolution—where machines don’t just move, they think and protect. With a PhD in Artificial Intelligence and formal training in theoretical physics, Dr. Kaplanski brings a unique perspective to the intersection of energy, computation, and human rights.
+
+In the first industrial revolution, humanity learned to convert fuel into motion and built the modern world. Today, Dr. Kaplanski believes we are witnessing an even bigger leap: using energy to create intelligence with AI, and harnessing that energy to secure freedom and trust through Bitcoin.
+
+Having launched and scaled startups in AI, cybersecurity, logistics, and payment systems, and authoring over 45 scientific papers and 2 patents, Dr. Kaplanski’s work explores how the physical laws of energy are reshaping what it means to think, transact, and trust in the digital era.
 
 ## Education
 

@@ -10,7 +10,7 @@ url: "https://kaplanski.ai" # the base hostname & protocol for your site, e.g. h
 # Author Settings
 author:
   name: Pawel Kaplanski, PhD
-  bio: Dr. Pawel Kaplanski, a distinguished leader in AI and software engineering, directs a team of elite AI practitioners, professors, and developers, selected through a stringent process. With a PhD from Gdansk University and a former Assistant Professorship at Sydney University, he has extensively contributed to AI through 45 papers and 2 patents in operations research, focusing on supply chain optimization. His work has led to the development and scaling of three startups in logistics and payment systems, alongside two AI ventures in cybersecurity and computer vision, demonstrating profound expertise in deploying machine learning models.
+  bio: Dr. Pawel Kaplanski stands at the forefront of a new industrial revolution—where machines not only move, but think and protect. With a PhD in Artificial Intelligence and formal training in theoretical physics, Dr. Kaplanski brings a unique perspective to the intersection of energy, computation, and human rights. He believes that while the first industrial revolution turned fuel into motion, today we are witnessing a leap where energy creates intelligence through AI and secures freedom and trust via Bitcoin. Having launched and scaled startups in AI, cybersecurity, logistics, and payment systems, and authoring over 45 scientific papers and 2 patents, Dr. Kaplanski’s work explores how the fundamental laws of energy are redefining intelligence, value, and trust for the digital age.
   avatar: '/images/pawel.jpeg'
 
 social:
@@ -26,8 +26,8 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: "Ciphers and Synapses"
-  hero__description: The dialogue between the decentralizing force of Bitcoin, promising a future of sovereign, hard money, and the centralizing tendencies of AI, offering keys to vast human knowledge.
+  hero__title: "Power Shift: The Rise of Thinking Electricity"
+  hero__description: It’s not just electricity anymore—it’s the lifeblood of smart machines and unstoppable money. Enter the age where every spark counts for something bigger.
   hero__image: '/images/pawel.jpeg'
 
 
