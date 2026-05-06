@@ -337,6 +337,10 @@
       height: 100%;
       border: 0;
       display: block;
+      /* treat the embed as an ambient figure: no hover overlay,
+         no center pause button, no title-bar peek on mouse-over.
+         The IFrame API still drives playback/seek without DOM events. */
+      pointer-events: none;
     }
   }
 
