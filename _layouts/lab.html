@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body class="lab-body">
+
+  {% if site.google-analytics %}
+    {% include google-analytics.html %}
+  {% endif %}
+
+  <main class="lab-main" aria-label="Kaplanski AI Lab">
+    {{ content }}
+  </main>
+
+  <script src="{{ site.baseurl }}/js/lab.js" defer></script>
+</body>
+</html>

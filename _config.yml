@@ -1,8 +1,8 @@
 #-------------------------------
 # General Site Settings
-title: Pawel Kaplanski, PhD
+title: Kaplanski AI Lab
 logo: # You can add own logo. For example '/images/logo.png'.
-description: Ciphers and Synapses.
+description: A microlab for thinking electricity — experiments at the boundary of energy, intelligence, and trust.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kaplanski.ai" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -10,7 +10,7 @@ url: "https://kaplanski.ai" # the base hostname & protocol for your site, e.g. h
 # Author Settings
 author:
   name: Pawel Kaplanski, PhD
-  bio: Dr. Pawel Kaplanski stands at the forefront of a new industrial revolution—where machines not only move, but think and protect. With a PhD in Artificial Intelligence and formal training in theoretical physics, Dr. Kaplanski brings a unique perspective to the intersection of energy, computation, and human rights. He believes that while the first industrial revolution turned fuel into motion, today we are witnessing a leap where energy creates intelligence through AI and secures freedom and trust via Bitcoin. Having launched and scaled startups in AI, cybersecurity, logistics, and payment systems, and authoring over 45 scientific papers and 2 patents, Dr. Kaplanski’s work explores how the fundamental laws of energy are redefining intelligence, value, and trust for the digital age.
+  bio: Director of Kaplanski AI Lab. PhD in Artificial Intelligence with formal training in theoretical physics. Working at the seam of energy, intelligence, and trust — AI, Bitcoin, and the physics that ties them together.
   avatar: '/images/pawel.jpeg'
 
 social:
@@ -24,10 +24,10 @@ social:
 # Other icons can be found at https://ionicons.com/v4/
 
 #-------------------------------
-# Hero Settings
+# Hero Settings (used on inner pages / OG image fallback)
 hero:
-  hero__title: "Power Shift: The Rise of Thinking Electricity"
-  hero__description: It’s not just electricity anymore—it’s the lifeblood of smart machines and unstoppable money. Enter the age where every spark counts for something bigger.
+  hero__title: "Kaplanski AI Lab"
+  hero__description: A microlab for thinking electricity. Cooking machine intelligence at the seam of physics, AI, and Bitcoin.
   hero__image: '/images/pawel.jpeg'
 
 
@@ -65,12 +65,8 @@ google-analytics: G-S0GNR5QN6P # Add your identifier. For example UA-99631805-1.
 markdown: kramdown
 permalink: /:title
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
   - jektex
-
-paginate: 5
-paginate_path: "/page/:num"
 
 # Pages Path
 defaults:

@@ -1,0 +1,754 @@
+/* =========================================================
+   Lab Inner Pages — header/footer, notes archive, page, post
+   Scoped to .site-* classes; also overrides legacy theme bits.
+   ========================================================= */
+
+/* ---------- Body (inner pages) ---------- */
+.lab-body { overflow-x: hidden; }
+
+body {
+  background: var(--black);
+  color: var(--bone);
+  font-family: $base-font-family;
+  font-feature-settings: "kern", "liga", "onum";
+  font-variation-settings: "opsz" 16;
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--black);
+}
+
+a {
+  color: var(--bone);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-strong);
+  transition: color 220ms ease, border-color 220ms ease;
+
+  &:hover, &:focus-visible {
+    color: var(--amber);
+    border-bottom-color: var(--amber);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $display-font-family;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--bone);
+  em { font-style: italic; }
+}
+
+hr.rule, hr {
+  border: 0;
+  height: 1px;
+  background: var(--rule-strong);
+  margin: 56px 0;
+  &::before { content: none; }
+}
+
+blockquote {
+  position: relative;
+  padding: 0 0 0 28px;
+  margin: 32px 0;
+  border-left: 1px solid var(--amber);
+  font-family: $display-font-family;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--bone);
+  text-align: left;
+  font-weight: 400;
+
+  &::before, &::after { content: none; border: 0; }
+  cite {
+    display: block;
+    margin-top: 12px;
+    font-family: $mono-font-family;
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    &::before { content: "— "; }
+    &::after  { content: ""; }
+  }
+}
+
+code, pre {
+  font-family: $mono-font-family;
+  font-size: 14px;
+  color: var(--bone-dim);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+code { padding: 2px 6px; }
+pre {
+  padding: 18px 20px;
+  overflow: auto;
+  white-space: pre;
+  word-wrap: normal;
+  word-break: normal;
+}
+pre code { padding: 0; border: 0; background: transparent; }
+
+table {
+  width: 100%;
+  border: 1px solid var(--rule);
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--bone-dim);
+  th, td { padding: 12px 14px; border: 1px solid var(--rule); text-align: left; }
+  th { background: var(--panel); color: var(--bone); font-family: $mono-font-family; font-weight: 500; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+  tr { background: transparent; &:nth-child(even) { background: var(--panel); } }
+}
+
+img { display: block; max-width: 100%; height: auto; }
+img + em {
+  display: block;
+  margin-top: 12px;
+  font-family: $mono-font-family;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-align: center;
+  font-style: normal;
+}
+
+/* ---------- Site header (inner pages) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 18px 36px;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    color: var(--bone);
+    &:hover, &:focus-visible { color: var(--bone); }
+  }
+  &__mark {
+    font-family: $mono-font-family;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--amber);
+  }
+  &__sep {
+    width: 22px; height: 1px;
+    background: var(--rule-strong);
+    display: inline-block;
+  }
+  &__name {
+    font-family: $display-font-family;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    em { font-style: italic; }
+  }
+
+  &__nav {
+    grid-column: 3;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    a {
+      border: 0;
+      font-family: $mono-font-family;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bone-dim);
+      position: relative;
+      padding: 4px 0;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 0; height: 1px;
+        background: var(--amber);
+        transition: width 240ms cubic-bezier(.2,.7,.1,1);
+      }
+      &:hover, &:focus-visible {
+        color: var(--bone);
+        &::after { width: 100%; }
+      }
+    }
+  }
+
+  &__menu {
+    display: none;
+    grid-column: 3;
+    justify-self: end;
+    background: transparent;
+    border: 1px solid var(--rule-strong);
+    width: 38px; height: 38px;
+    padding: 0;
+    cursor: pointer;
+    span {
+      display: block;
+      width: 16px; height: 1px;
+      background: var(--bone);
+      margin: 4px auto;
+    }
+  }
+
+  @media (max-width: 720px) {
+    &__inner { grid-template-columns: 1fr auto; padding: 14px 20px; }
+    &__nav   { display: none; }
+    &__menu  { display: inline-block; }
+    &__name  { display: none; }
+  }
+}
+
+/* ---------- Site footer ---------- */
+.site-footer {
+  margin-top: 120px;
+  padding: 40px 0 56px;
+  border-top: 1px solid var(--rule);
+  font-family: $mono-font-family;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    gap: 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 36px;
+  }
+
+  &__l { display: inline-flex; align-items: center; gap: 10px; }
+  &__mark { color: var(--amber); }
+  &__name { color: var(--bone-dim); font-family: $display-font-family; font-size: 14px; letter-spacing: 0.02em; text-transform: none; em { font-style: italic; } }
+
+  &__c {
+    text-align: center;
+    a { border: 0; color: var(--bone-dim); &:hover { color: var(--amber); } }
+    span { margin: 0 6px; color: var(--gray-deep); }
+  }
+
+  &__r { text-align: right; color: var(--gray-deep); }
+
+  @media (max-width: 720px) {
+    &__inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      &__l, &__r { justify-content: center; text-align: center; }
+    }
+    &__c { line-height: 2; }
+  }
+}
+
+/* ---------- Notes archive ---------- */
+.archive {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+
+  &__head {
+    max-width: 880px;
+    margin: 80px auto 56px;
+    padding: 0 36px;
+  }
+  &__kicker {
+    font-family: $mono-font-family;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    &::before {
+      content: "";
+      width: 36px; height: 1px;
+      background: var(--amber);
+    }
+  }
+  &__title {
+    font-family: $display-font-family;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 0.96;
+    margin: 0 0 16px;
+    em { font-style: italic; }
+  }
+  &__sub {
+    font-family: $base-font-family;
+    font-style: italic;
+    color: var(--bone-dim);
+    font-size: 19px;
+    max-width: 540px;
+    margin: 0;
+  }
+
+  &__row { border-bottom: 1px solid var(--rule); }
+  &__link {
+    display: grid;
+    grid-template-columns: 56px 130px 1fr auto 28px;
+    align-items: baseline;
+    gap: 24px;
+    padding: 28px 36px;
+    border: 0;
+    color: var(--bone);
+    font-family: $base-font-family;
+    transition: background 220ms ease, color 220ms ease;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    &:hover, &:focus-visible {
+      background: rgba(255,176,0,0.04);
+      color: var(--bone);
+      .archive__num   { color: var(--amber); }
+      .archive__arrow { transform: translateX(6px); color: var(--amber); }
+      .archive__name  { color: var(--bone); }
+    }
+  }
+  &__num {
+    font-family: $mono-font-family;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--gray-deep);
+  }
+  &__date {
+    font-family: $mono-font-family;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  &__name {
+    font-family: $display-font-family;
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--bone);
+  }
+  &__tags {
+    display: inline-flex;
+    gap: 8px;
+    span {
+      font-family: $mono-font-family;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border: 1px solid var(--rule);
+      padding: 3px 8px;
+    }
+  }
+  &__arrow {
+    font-family: $mono-font-family;
+    color: var(--gray);
+    transition: transform 220ms cubic-bezier(.2,.7,.1,1), color 220ms ease;
+  }
+
+  @media (max-width: 880px) {
+    &__head { margin: 56px auto 36px; padding: 0 20px; }
+    &__link {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "num    date"
+        "name   name"
+        "tags   arrow";
+      gap: 8px 14px;
+      padding: 22px 20px;
+    }
+    &__num   { grid-area: num; }
+    &__date  { grid-area: date; text-align: right; }
+    &__name  { grid-area: name; font-size: 22px; }
+    &__tags  { grid-area: tags; }
+    &__arrow { grid-area: arrow; text-align: right; align-self: end; }
+  }
+}
+
+/* ---------- Page (about-me / contact) ---------- */
+.content > .container.animate {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px 0;
+}
+.page__info {
+  text-align: left;
+  margin: 0 0 36px;
+}
+.page__title {
+  font-family: $display-font-family;
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 1.0;
+  text-transform: none;
+  letter-spacing: -0.005em;
+  margin: 0;
+  color: var(--bone);
+  em { font-style: italic; }
+  &::before {
+    content: "";
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--amber);
+    margin-bottom: 18px;
+  }
+}
+.page__content {
+  font-family: $base-font-family;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--bone-dim);
+
+  > p { margin: 0 0 1.4em; }
+
+  h1 {
+    font-family: $display-font-family;
+    font-size: clamp(48px, 6vw, 84px);
+    line-height: 0.98;
+    margin: 0 0 36px;
+    color: var(--bone);
+  }
+  h2 {
+    font-family: $display-font-family;
+    font-size: 36px;
+    line-height: 1.1;
+    margin: 64px 0 20px;
+    color: var(--bone);
+    em { font-style: italic; }
+    /* small registration tick before h2 */
+    &::before {
+      content: "";
+      display: block;
+      width: 36px; height: 1px;
+      background: var(--amber);
+      margin-bottom: 18px;
+    }
+  }
+  h3 {
+    font-family: $display-font-family;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 36px 0 12px;
+    color: var(--bone);
+  }
+  ul, ol { padding-left: 22px; margin: 0 0 1.4em; }
+  li { margin-bottom: 6px; }
+  strong { color: var(--bone); font-weight: 500; }
+
+  .dossier-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    margin: 0 0 48px;
+    padding: 18px 22px;
+    border-top: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--rule-strong);
+
+    span {
+      font-family: $mono-font-family;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bone-dim);
+      b {
+        display: block;
+        font-weight: 400;
+        font-size: 9px;
+        letter-spacing: 0.24em;
+        color: var(--gray-deep);
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .dropcap::first-letter {
+    font-family: $display-font-family;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 5.4em;
+    line-height: 0.85;
+    float: left;
+    margin: 0.06em 0.12em 0 -0.04em;
+    color: var(--amber);
+  }
+
+  .footnote {
+    font-family: $mono-font-family;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray);
+    a { border-bottom-color: var(--rule-strong); }
+  }
+}
+
+/* Default page-title hero (inherited layout) */
+.page-image { display: none; }
+
+/* ---------- Post body ---------- */
+.post__info, .page__info {
+  text-align: left;
+  margin-bottom: 36px;
+}
+.post__title, .page__title {
+  font-family: $display-font-family;
+  font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 76px);
+  line-height: 1.0;
+  letter-spacing: -0.005em;
+  text-transform: none;       /* override legacy uppercase */
+  margin: 0 0 18px;
+  color: var(--bone);
+  em { font-style: italic; }
+
+  @media (max-width: 720px) { font-size: clamp(32px, 9vw, 48px); }
+}
+.post__meta {
+  font-family: $mono-font-family;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-weight: 400;
+  a { color: var(--bone-dim); border: 0; &:hover { color: var(--amber); } }
+}
+.post__content {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--bone-dim);
+
+  h1, h2, h3 {
+    color: var(--bone);
+    font-family: $display-font-family;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: 32px;
+    margin: 56px 0 16px;
+    &::before {
+      content: "";
+      display: block;
+      width: 36px; height: 1px;
+      background: var(--amber);
+      margin-bottom: 16px;
+    }
+  }
+  h3 { font-size: 22px; font-style: italic; margin: 32px 0 10px; }
+  p  { margin: 0 0 1.4em; }
+  a  { color: var(--bone); border-bottom: 1px solid var(--rule-strong);
+       &:hover { color: var(--amber); border-bottom-color: var(--amber); } }
+}
+
+/* Post share / tags / author block — minimal lab styling */
+.post__bottom {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $mono-font-family;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  .share__list { display: inline-flex; gap: 14px; padding: 0; margin: 0; list-style: none; }
+  .share__link { color: var(--bone-dim); border: 0; &:hover { color: var(--amber); } }
+  .post__tags  { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+  .post__tag   {
+    border: 1px solid var(--rule);
+    color: var(--bone-dim);
+    padding: 4px 9px;
+    border-bottom: 1px solid var(--rule);
+    &:hover { color: var(--amber); border-color: var(--amber); }
+  }
+}
+
+.post-author {
+  margin-top: 56px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+
+  &__image {
+    width: 64px; height: 64px;
+    min-width: 64px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 0;
+    overflow: hidden;
+    flex: none;
+    margin-right: 0;
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  }
+  &__name {
+    font-family: $display-font-family;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    text-transform: none;
+    margin: 0 0 6px;
+    a { color: var(--bone); border: 0; }
+  }
+  &__bio {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--bone-dim);
+    margin: 0 0 8px;
+  }
+  &__meta a {
+    margin-right: 12px;
+    color: var(--gray);
+    font-size: 18px;
+    border: 0;
+    &:hover { color: var(--amber); }
+  }
+}
+
+.post-image, .page-image {
+  position: relative;
+  height: auto;
+  max-width: 1280px;
+  margin: 0 auto 40px;
+  padding: 0 36px;
+  border-radius: 0;
+  overflow: visible;
+  img {
+    position: static;
+    width: 100%; height: auto;
+    border-radius: 0;
+    object-fit: contain;
+    background: transparent;
+  }
+}
+
+/* override legacy .post / .page width so our editorial column (720px) wins */
+.post, .page { max-width: none; }
+
+/* ---------- Contact form ---------- */
+.form-box {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+.contact-head {
+  margin: 24px 0 36px;
+  .page-description {
+    font-family: $base-font-family;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--bone-dim);
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  &__group { width: 100%; }
+  &__input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--panel);
+    border: 1px solid var(--rule-strong);
+    color: var(--bone);
+    font-family: $base-font-family;
+    font-size: 16px;
+    line-height: 1.5;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 220ms ease, background 220ms ease;
+
+    &::placeholder {
+      color: var(--gray);
+      font-family: $mono-font-family;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    &:focus { border-color: var(--amber); background: var(--panel-2); }
+  }
+  textarea.form__input { font-family: $base-font-family; resize: vertical; min-height: 180px; }
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  color: var(--bone);
+  font-family: $mono-font-family;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
+
+  &:hover, &:focus-visible {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(255,176,0,0.04);
+  }
+  &::after { content: " →"; }
+}
+
+/* ---------- Tags page (legacy) ---------- */
+.tags-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 32px 0;
+  li a {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font-family: $mono-font-family;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    &:hover { color: var(--amber); border-color: var(--amber); }
+  }
+}
+
+/* ---------- Hide / neutralize legacy template bits ---------- */
+.hero, .page-image, .top, .nav-buttons, .toggle-theme,
+.footer__inner .footer-widget, .pagination__prev, .pagination__next {
+  /* most of these still exist somewhere in the template;
+     keep the hero hidden globally — index.html no longer renders it */
+}
+.hero { display: none; }
+.top  { display: none; }   /* scroll-to-top icon — remove for cleaner aesthetic */
+.toggle-theme { display: none; }
+
+/* Article cards on legacy home (in case pagination view ever loads) */
+.article { display: none; }

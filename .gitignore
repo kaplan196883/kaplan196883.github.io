@@ -3,3 +3,7 @@ _site
 .jekyll-cache
 .jekyll-metadata
 .DS_Store
+
+# dev screenshots / playwright traces
+.playwright-mcp/
+play-*.png

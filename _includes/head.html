@@ -2,8 +2,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
 
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{% if page.url == "/" %}{{ site.title }} — Microlab for Thinking Electricity{% elsif page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name='description' content='{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}'>
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
@@ -20,20 +21,15 @@
   <meta property="og:description" content="{% if page.url == "/" %}{{ site.description | strip_html | xml_escape }}{% elsif page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}" />
   <meta property="og:image" content="{% if page.url == "/" %}{{ site.hero.hero__image | absolute_url }}{% else %}{{ page.image | absolute_url }}{% endif %}" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,700;0,900;1,900&display=swap" rel="stylesheet">
+  <!-- Fonts: Instrument Serif (display), Newsreader (body), JetBrains Mono (HUD) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Ionicons -->
   <link href="https://unpkg.com/ionicons@4.6.4-1/dist/css/ionicons.min.css" rel="stylesheet">
 
-  <script>
-    if (localStorage.getItem("theme") === "dark") {
-      document.documentElement.setAttribute("dark", "");
-      document.documentElement.classList.add('dark-mode');
-    }
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js" defer></script>
 
   <style>
   {% capture include_to_scssify %}
@@ -41,42 +37,34 @@
   {% endcapture %}
   {{ include_to_scssify | scssify }}
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
- 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
 <script>
-  var config = {
-      startOnLoad:true,
-      theme: 'base',
-      themeVariables: {
-        activationBorderColor:'#000',
-        activationBkgColor:'#F00',
-
-        primaryColor: '#FFF',
-        primaryTextColor: '#000',
-        primaryBorderColor: '#000',
-        secondaryColor: '#FFF',
-        secondaryTextColor: '#000',
-        secondaryBorderColor: '#000',
-        tertiaryColor: '#FFF',
-        tertiaryTextColor: '#000',
-        tertiaryBorderColor: '#000',
- 
-        lineColor: '#000',
-        
-        noteBkgColor:'#FFF',
-        noteTextColor:'#000',
-        noteBorderColor:'#000',
-
-        labelBoxBorderColor:'#F00',
-        background:'#FFF',
-      },
-      flowchart:{
-              useMaxWidth:false,
-              htmlLabels:true,
-          }
-  };
-  mermaid.initialize(config);
-  window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-  </script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.mermaid) {
+      window.mermaid.initialize({
+        startOnLoad: false,
+        theme: 'base',
+        themeVariables: {
+          primaryColor:        '#0A0A0A',
+          primaryTextColor:    '#F2ECE0',
+          primaryBorderColor:  '#FFB000',
+          secondaryColor:      '#0A0A0A',
+          secondaryTextColor:  '#F2ECE0',
+          secondaryBorderColor:'#2A2A2A',
+          tertiaryColor:       '#000000',
+          tertiaryTextColor:   '#F2ECE0',
+          tertiaryBorderColor: '#2A2A2A',
+          lineColor:           '#7A746A',
+          noteBkgColor:        '#0A0A0A',
+          noteTextColor:       '#F2ECE0',
+          noteBorderColor:     '#FFB000',
+          background:          '#000000'
+        },
+        flowchart: { useMaxWidth: false, htmlLabels: true }
+      });
+      window.mermaid.run({ querySelector: '.language-mermaid' });
+    }
+  });
+</script>
 </head>

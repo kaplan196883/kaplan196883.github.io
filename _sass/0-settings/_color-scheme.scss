@@ -1,61 +1,57 @@
-/* Color Scheme */
+/* Color Scheme — Kaplanski AI Lab */
 
 :root {
-  --brand-color: #533feb;
-  --white: #fff;
-  --light-gray: #f0f0f0;
-  --gray: #6a6d76;
-  --dark: #0c101a;
-  --dark-blue: #1e2740;
+  --black:           #000000;
+  --near-black:      #050505;
+  --panel:           #0A0A0A;
+  --panel-2:         #111111;
+  --rule:            #1A1A1A;
+  --rule-strong:     #2A2A2A;
 
-  --background-color: var(--white);
-  --background-alt-color: var(--dark);
-  
-  --text-color: var(--dark-blue);
-  --text-alt-color: var(--gray);
-  
-  --heading-font-color: var(--dark-blue);
+  --bone:            #F2ECE0;     /* primary text — warm off-white, paper-like */
+  --bone-dim:        #C9C2B5;
+  --gray:            #7A746A;     /* secondary, captions */
+  --gray-deep:       #4A453F;
 
-  --link-color: var(--dark-blue);
-  --link-color-hover: var(--brand-color);
+  --amber:           #FFB000;     /* sodium-vapor accent — used sparingly */
+  --amber-soft:      rgba(255, 176, 0, 0.18);
+  --amber-faint:     rgba(255, 176, 0, 0.08);
+  --critical:        #FF4136;     /* status-pulse only */
 
-  --button-color: var(--white);
-  --button-background-color: var(--dark-blue);
-  --button-background-hover: var(--brand-color);
+  --background-color:     var(--black);
+  --background-alt-color: var(--near-black);
 
-  --border-color: var(--light-gray);
-  --border-color-alt: #212630;
+  --text-color:        var(--bone);
+  --text-alt-color:    var(--gray);
 
-  --tr-color: var(--light-gray);
+  --heading-font-color: var(--bone);
 
-  --syntax-highlighting-background: #f3f3f3;
+  --link-color:         var(--bone);
+  --link-color-hover:   var(--amber);
+
+  --button-color:                var(--bone);
+  --button-background-color:     transparent;
+  --button-background-hover:     var(--amber);
+
+  --border-color:       var(--rule);
+  --border-color-alt:   var(--rule-strong);
+
+  --tr-color:           var(--panel);
+
+  --syntax-highlighting-background: var(--panel-2);
 }
 
+/* keep [dark] alias mapped to the same tokens — dark-only site */
 :root[dark] {
-  --brand-color: #533feb;
-  --white: #fff;
-  --light-gray: #f0f0f0;
-  --dark: #0c101a;
-
-  --background-color: var(--dark);
-  --background-alt-color: #080b12;
-  
-  --text-color: #9a9eab;
-  --text-alt-color: #848690;
-  
-  --heading-font-color: var(--light-gray);
-
-  --link-color: var(--light-gray);
-  --link-color-hover: var(--brand-color);
-
-  --button-color: var(--white);
-  --button-background-color: #080b12;
-  --button-background-hover: var(--brand-color);
-
-  --border-color: #252629;
-  --border-color-alt: #212630;
-
-  --tr-color: #080b12;
-
-  --syntax-highlighting-background: #080b12;
+  --background-color:     var(--black);
+  --background-alt-color: var(--near-black);
+  --text-color:           var(--bone);
+  --text-alt-color:       var(--gray);
+  --heading-font-color:   var(--bone);
+  --link-color:           var(--bone);
+  --link-color-hover:     var(--amber);
+  --border-color:         var(--rule);
+  --border-color-alt:     var(--rule-strong);
+  --tr-color:             var(--panel);
+  --syntax-highlighting-background: var(--panel-2);
 }

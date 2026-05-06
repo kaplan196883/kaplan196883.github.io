@@ -87,6 +87,8 @@
 @import '3-modules/hero';
 /* >>>>>>>>>>>>>> :: 3.8-Contact <<<<<<<<<<<<<<< */
 @import '3-modules/contact';
+/* >>>>>>>>>>>>>> :: 3.9-Lab Hero <<<<<<<<<<<<<<< */
+@import '3-modules/lab-hero';
 
 
 /* =======================
@@ -98,3 +100,5 @@
 @import '4-layouts/post';
 /* >>>>>>>>>>>>>> :: 4.3-Tags Page <<<<<<<<<<<<<<< */
 @import '4-layouts/tags-page';
+/* >>>>>>>>>>>>>> :: 4.4-Lab Pages (overrides) <<<<<<<<<<<<<<< */
+@import '4-layouts/lab-pages';

@@ -1,0 +1,30 @@
+---
+layout: default
+title: Notes
+permalink: /notes/
+description: Lab notes from Kaplanski AI Lab — papers, whitepapers, and longer-form essays on AI, Bitcoin, and energy.
+---
+
+<div class="container">
+  <header class="archive__head">
+    <p class="archive__kicker">Lab Notes · Index</p>
+    <h1 class="archive__title"><em>Notebook.</em></h1>
+    <p class="archive__sub">Working papers, whitepapers and essays — written down so I stop forgetting them.</p>
+  </header>
+
+  <ol class="archive">
+    {% for post in site.posts %}
+      <li class="archive__row">
+        <a class="archive__link" href="{{ post.url | prepend: site.baseurl }}">
+          <span class="archive__num">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
+          <span class="archive__date">{{ post.date | date: "%Y · %m · %d" }}</span>
+          <span class="archive__name">{{ post.title }}</span>
+          <span class="archive__tags">
+            {% for t in post.tags %}<span>{{ t }}</span>{% endfor %}
+          </span>
+          <span class="archive__arrow">→</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ol>
+</div>

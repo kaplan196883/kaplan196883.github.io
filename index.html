@@ -1,17 +1,185 @@
 ---
-layout: default
+layout: lab
+title: Kaplanski AI Lab
+description: An independent research lab studying the dynamics of recursive large-language-model loops, energy, and trust.
 ---
 
-{% include hero.html %}
+<section class="lab" aria-label="Kaplanski AI Lab">
 
-<div class="container">
-  <div class="row animate">
-    {% if site.posts.size > 0 %}
-      {% for post in paginator.posts %}
-        {% include article-content.html %}
-      {% endfor %}
-    {% endif %}
+  <div class="lab__bg" aria-hidden="true"></div>
+  <div class="lab__grain" aria-hidden="true"></div>
+
+  <span class="lab__bracket lab__bracket--tl" aria-hidden="true"></span>
+  <span class="lab__bracket lab__bracket--tr" aria-hidden="true"></span>
+  <span class="lab__bracket lab__bracket--br" aria-hidden="true"></span>
+  <span class="lab__bracket lab__bracket--bl" aria-hidden="true"></span>
+
+  <!-- Top HUD -->
+  <header class="lab__hud lab__hud--top">
+    <div class="lab__hud__l" aria-hidden="true"></div>
+    <div class="lab__hud__c">
+      <span class="lab__brand"><em>Kaplanski</em> AI Lab</span>
+    </div>
+    <nav class="lab__hud__r lab__nav" aria-label="Primary">
+      <a href="{{ site.baseurl }}/notes/">Notes</a>
+      <span class="lab__nav__sep">·</span>
+      <a href="https://github.com/kaplan196883/llmattr" rel="noopener" target="_blank">Code</a>
+      <span class="lab__nav__sep">·</span>
+      <a href="{{ site.baseurl }}/about-me/">About&nbsp;Me</a>
+      <span class="lab__nav__sep">·</span>
+      <a href="{{ site.baseurl }}/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <div class="lab__hero">
+
+    <div class="lab__hero__col lab__hero__col--copy">
+      <p class="lab__title__kicker">Independent AI research</p>
+
+      <h1 class="lab__title__display">
+        Research on language-model dynamics.
+      </h1>
+
+      <p class="lab__title__sub">
+        We study recursive large-language-model loops — the
+        perturbation dose required to redirect them, the energy
+        that runs them, and the trust they require. Code and
+        papers in public.
+      </p>
+
+      <dl class="lab__title__meta">
+        <div><dt>Director</dt><dd>Pawel Kaplanski, PhD</dd></div>
+        <div><dt>Domains</dt><dd>AI · Physics · Bitcoin</dd></div>
+        <div><dt>Output</dt><dd>45 papers · 2 patents</dd></div>
+      </dl>
+    </div>
+
+    <div class="lab__hero__col lab__hero__col--video">
+
+      <p class="lab__panel__kicker">
+        Working paper · arXiv 2605.02236
+      </p>
+
+      <h2 class="lab__panel__title">
+        Perturbation dose responses in recursive
+        large-language-model loops.
+      </h2>
+      <p class="lab__panel__sub">
+        Raw switching, stochastic floors, and rare persistent escape
+        across append, replace, and dialog nudges.
+      </p>
+
+      <figure class="lab__video-frame">
+        <span class="lab__bracket lab__bracket--tl" aria-hidden="true"></span>
+        <span class="lab__bracket lab__bracket--tr" aria-hidden="true"></span>
+        <span class="lab__bracket lab__bracket--br" aria-hidden="true"></span>
+        <span class="lab__bracket lab__bracket--bl" aria-hidden="true"></span>
+
+        <div class="lab__video-frame__inner">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/SQMsWSN9zM0?rel=0&modestbranding=1&playsinline=1&color=white"
+            title="Single-particle 3D PCA trajectory in a recursive LLM loop"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+
+        <figcaption class="lab__video-frame__cap">
+          Fig. 1 — Single-particle 3D PCA trajectory of a recursive
+          GPT-4o-mini loop under an adversarial in-distribution
+          injection. Source: <code>kaplan196883/llmattr</code>.
+        </figcaption>
+      </figure>
+
+      <details class="lab__abstract" open>
+        <summary>
+          <span class="lab__abstract__label">Abstract</span>
+          <span class="lab__abstract__chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="lab__abstract__body">
+          <p>
+            Recursive language-model loops often settle into recognizable
+            attractor-like patterns, but the practical question is how
+            much injected text is needed to move a settled loop somewhere
+            else, and whether that move lasts. We study this in 30-step
+            recursive loops by separating the model from the
+            context-update rule: append, replace, and dialog updates
+            expose different histories to the same generator.
+          </p>
+          <p>
+            The main result is that persistent redirection in append-mode
+            loops is memory-policy-conditioned. Under a 12 K-character
+            tail-clip, destination-coherent persistence plateaus near
+            <b>16 %</b> across doses 5–400 tokens; under a full-history
+            protocol, retained source-basin escape crosses 50 % near
+            400 tokens and saturates at 75–80 % by 1,500 tokens.
+            Adversarial continuations yield
+            ED<sub>50</sub><sup>raw</sup> ≈ <b>40 tokens</b>, with
+            convergent estimates from pooled logistic fitting,
+            mixed-effects modeling, and family-cluster bootstrap.
+          </p>
+          <p>
+            Practically, recursive-loop evaluations should distinguish
+            transient movement from durable escape, always subtract
+            stochastic floors, and treat context-update rules as
+            first-class safety-relevant design choices rather than
+            implementation details.
+          </p>
+        </div>
+      </details>
+
+      <ul class="lab__stats" aria-label="Headline numbers">
+        <li>
+          <span class="lab__stats__k">ED<sub>50</sub><sup>raw</sup></span>
+          <span class="lab__stats__v">40<em>tok</em></span>
+          <span class="lab__stats__t">half-effect dose, append-mode</span>
+        </li>
+        <li>
+          <span class="lab__stats__k">Persistence</span>
+          <span class="lab__stats__v">16<em>%</em></span>
+          <span class="lab__stats__t">12 K tail-clip, doses 5–400</span>
+        </li>
+        <li>
+          <span class="lab__stats__k">Experiments</span>
+          <span class="lab__stats__v">37<em>runs</em></span>
+          <span class="lab__stats__t">gpt-4o-mini · gpt-4.1-nano</span>
+        </li>
+      </ul>
+
+      <div class="lab__panel__actions">
+        <a class="lab__cta lab__cta--primary"
+           href="https://arxiv.org/abs/2605.02236" rel="noopener" target="_blank">
+          <span>Read the preprint</span>
+          <span class="lab__cta__arrow">↗</span>
+        </a>
+        <a class="lab__cta"
+           href="https://github.com/kaplan196883/llmattr" rel="noopener" target="_blank">
+          <span>github / llmattr</span>
+          <span class="lab__cta__arrow">↗</span>
+        </a>
+      </div>
+
+    </div>
+
   </div>
-</div>
 
-{% include pagination.html %}
+  <!-- Bottom HUD -->
+  <footer class="lab__hud lab__hud--bottom">
+    <div class="lab__hud__l">
+      <span class="lab__mono">
+        <span class="lab__mono__mark">arXiv</span>
+        <span class="lab__mono__sep"></span>
+        <span class="lab__mono__name">2605.02236 · cs.CL</span>
+      </span>
+    </div>
+    <div class="lab__hud__c"></div>
+    <div class="lab__hud__r">
+      <span class="lab__mono">
+        <span class="lab__mono__name">Kaplanski AI Lab · Gdańsk · MMXXVI</span>
+      </span>
+    </div>
+  </footer>
+
+</section>
