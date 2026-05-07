@@ -105,9 +105,9 @@ description: Perturbation dose responses in recursive large-language-model loops
     </ol>
   </section>
 
-  <!-- ============== 3. Figure ============== -->
+  <!-- ============== 3. Figures ============== -->
   <section class="paper-landing__fig">
-    <p class="paper-landing__section-kicker">Figure</p>
+    <p class="paper-landing__section-kicker">Figures</p>
 
     <figure class="paper-landing__video">
       <span class="lab__bracket lab__bracket--tl" aria-hidden="true"></span>
@@ -132,6 +132,34 @@ description: Perturbation dose responses in recursive large-language-model loops
         elsewhere, and partially returns once the bounded-memory tail-clip
         flushes the perturbation. Source:
         <code>kaplan196883/llmattr</code>.
+      </figcaption>
+    </figure>
+
+    <figure class="paper-landing__video">
+      <span class="lab__bracket lab__bracket--tl" aria-hidden="true"></span>
+      <span class="lab__bracket lab__bracket--tr" aria-hidden="true"></span>
+      <span class="lab__bracket lab__bracket--br" aria-hidden="true"></span>
+      <span class="lab__bracket lab__bracket--bl" aria-hidden="true"></span>
+
+      <div class="paper-landing__video__inner">
+        <video
+          poster="{{ site.baseurl }}/images/lab-figure-2-poster.png"
+          autoplay muted loop playsinline preload="auto"
+          aria-label="Long-horizon recursive LLM trajectory ensemble under adversarial perturbation. n=10 trajectories shown across an extended 79-step horizon.">
+          <source src="{{ site.baseurl }}/videos/lab-figure-2.webm" type="video/webm">
+          <source src="{{ site.baseurl }}/videos/lab-figure-2.mp4"  type="video/mp4">
+        </video>
+      </div>
+
+      <figcaption>
+        Fig. 2 — Long-horizon recursive LLM trajectory ensemble (n=10)
+        under an adversarial perturbation in the O1 append-mode loop,
+        dose 2,000 tokens. The 50-step extension (steps 30–79) closes
+        the canonical 30-step destination-coherent dip: under the
+        frozen PCA + K-means basis from the original experiment, the
+        dip drops <strong>73 %</strong> from −0.143 (95 % CI [−0.269,
+        −0.034]) at step 29 to −0.039 (CI [−0.158, +0.068]) at step 79.
+        Source: <code>kaplan196883/llmattr</code>.
       </figcaption>
     </figure>
   </section>
